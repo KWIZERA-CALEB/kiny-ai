@@ -1,0 +1,69 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": ["Hello", "Hi", "Hey", "Good morning", "Good evening"],
+            "responses": ["Hello! How can I assist you today?", "Hi there! How can I help?", "Hey! What can I do for you?"]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": ["Bye", "Goodbye", "See you later", "I am leaving", "Catch you later"],
+            "responses": ["Goodbye! Have a great day.", "See you later! Feel free to reach out anytime.", "Take care!"]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["Thanks", "Thank you", "Appreciate it", "Thanks a lot", "Thank you so much"],
+            "responses": ["You're welcome!", "Happy to help!", "Anytime! Feel free to ask if you need anything else."]
+        },
+        {
+            "tag": "buy_property",
+            "patterns": ["I want to buy a property", "Looking to buy a house", "Show me houses for sale", "I need a house", "Can you help me buy a home?"],
+            "responses": ["Sure! What type of property are you looking to buy?", "We have great listings! What is your preferred location and budget?", "Let me help you with that. What kind of house are you looking for?"]
+        },
+        {
+            "tag": "rent_property",
+            "patterns": ["I want to rent a house", "Looking to rent a property", "I need a rental property", "Show me houses for rent", "Help me find a rental property"],
+            "responses": ["Sure! What type of rental property are you looking for?", "We have some great rental listings. What’s your preferred area?", "I can help with that. What’s your budget and preferred location?"]
+        },
+        {
+            "tag": "sell_property",
+            "patterns": ["I want to sell my property", "How do I sell my house?", "Can you help me sell a property?", "I need to list my house for sale", "I want to put my house on the market"],
+            "responses": ["We can help you sell your property! Can you provide some details about the property?", "Let's get started with selling your property. What’s the location and size?", "We can assist with listing your property. Please share more details like location and price."]
+        },
+        {
+            "tag": "property_location",
+            "patterns": ["Where are your properties located?", "What locations do you have properties?", "Do you have properties in [location]?", "Can I find a property in [city]?"],
+            "responses": ["We have properties in multiple locations. Which city or neighborhood are you interested in?", "Yes, we have properties in [location]. What kind of property are you looking for?", "We serve multiple locations, including [city]."]
+        },
+        {
+            "tag": "property_price",
+            "patterns": ["What is the price range of the properties?", "How much do the houses cost?", "Can you tell me the price of the houses?", "What's the average price of houses?", "How expensive are the properties?"],
+            "responses": ["Our properties vary in price. What is your budget?", "The price depends on the location and type of property. What’s your price range?", "We have a wide range of properties, starting from as low as $XXX. What's your preferred budget?"]
+        },
+        {
+            "tag": "contact_agent",
+            "patterns": ["How can I contact an agent?", "I need to speak with an agent", "Can you connect me to a real estate agent?", "Is there someone I can talk to about this?", "I need help from an agent"],
+            "responses": ["Sure! You can contact one of our agents at [phone number] or [email].", "Our agents are happy to help. You can reach out to us at [contact details].", "Feel free to contact our agents directly at [phone number] or through our contact form."]
+        },
+        {
+            "tag": "schedule_tour",
+            "patterns": ["Can I schedule a property tour?", "I want to see the house", "Can I visit the property?", "I’d like to schedule a tour", "When can I visit the property?"],
+            "responses": ["Of course! When would you like to schedule the tour?", "We can arrange a tour. What’s your preferred time?", "Let’s set up a time for the property visit. What day works best for you?"]
+        },
+        {
+            "tag": "mortgage_options",
+            "patterns": ["What are the mortgage options?", "Can you help with mortgages?", "Do you provide mortgage assistance?", "What are the loan options for buying a house?", "How do I finance my property purchase?"],
+            "responses": ["We can assist you with mortgage options. Would you like us to connect you with a financial advisor?", "Yes, we offer mortgage assistance. We can guide you through the available financing options.", "We have various mortgage plans depending on your needs. Would you like more information?"]
+        },
+        {
+            "tag": "property_size",
+            "patterns": ["What is the size of the house?", "How big is the property?", "What are the dimensions of the property?", "What’s the square footage of the house?", "Can you tell me the size of the house?"],
+            "responses": ["The property is approximately [size] square feet. Does this meet your requirements?", "This house has a total size of [square footage].", "The property is [size] in square footage. Would you like more details?"]
+        },
+        {
+            "tag": "neighborhood_info",
+            "patterns": ["Can you tell me about the neighborhood?", "What is the area like?", "Is the neighborhood safe?", "How are the schools in the area?", "What’s the community like around this property?"],
+            "responses": ["The neighborhood is very safe and family-friendly. Would you like more details?", "It’s a great area with schools, parks, and amenities nearby.", "The community is vibrant with lots of nearby facilities. Would you like more specific information?"]
+        }
+    ]
+}
