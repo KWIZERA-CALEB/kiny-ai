@@ -5,7 +5,7 @@ const Navigation = () => {
     const currentPath = useLocation()
   return (
     <div className='w-full h-[80px] flex justify-center items-center'>
-      <div className='flex flex-row space-x-[60px] items-center'>
+      <div className='flex-row hidden md:flex space-x-[20px] md:space-x-[60px] items-center'>
         <div>
             <Link to={'/'}>
                 <p className={currentPath.pathname === '/' ? 'poppins bg-gradient bg-clip-text text-transparent cursor-pointer' : 'poppins text-gray-500 cursor-pointer'}>Home</p>
