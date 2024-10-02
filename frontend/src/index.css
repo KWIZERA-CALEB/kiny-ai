@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: poppins;
+    src: url('/fonts/Poppins-SemiBold.ttf');
+}
+
+.poppins {
+    font-family: poppins;
+}
+
+
+.bg-gradient {
+    background-image: linear-gradient(to right, #6366F1, #38BDF8, #10B981);
+}
