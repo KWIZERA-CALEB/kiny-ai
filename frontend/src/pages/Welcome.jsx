@@ -22,10 +22,23 @@ const Welcome = () => {
             </div>
         </div>
 
-        <Dialog open={open} className='p-[20px]' handler={handleOpen}>
+        <Dialog open={open} className='p-[30px]' handler={handleOpen}>
             <div className='flex justify-center'><p className='poppins uppercase text-[18px] cursor-pointer font-bold'>Mwalimu.ai</p></div>
             <div className='w-full mt-[20px]'>
-                
+                <form className='flex flex-col space-y-[10px]'>
+                    <div>
+                        <input type='text' className='w-full border-blue-500 border-solid border-[2px] rounded-full pt-[20px] poppins-regular text-[14px] pb-[20px] pr-[10px] pl-[10px] h-[20px]' placeholder='Email' />
+                    </div>
+                    <div>
+                        <input type='text' className='w-full border-blue-500 border-solid border-[2px] rounded-full pt-[20px] poppins-regular text-[14px] pb-[20px] pr-[10px] pl-[10px] h-[20px]' placeholder='Username' />
+                    </div>
+                    <div>
+                        <input type='text' className='w-full border-blue-500 border-solid border-[2px] rounded-full pt-[20px] poppins-regular text-[14px] pb-[20px] pr-[10px] pl-[10px] h-[20px]' placeholder='Password' />
+                    </div>
+                    <div>
+                        <Button className='bg-blue-500 w-full rounded-full'>Login</Button>  
+                    </div>
+                </form>
             </div>
             <DialogFooter></DialogFooter>
         </Dialog>
