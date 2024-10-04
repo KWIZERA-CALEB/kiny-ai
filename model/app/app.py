@@ -1,7 +1,10 @@
 from flask import Flask, request, jsonify, render_template  
 from utils import get_response, predict_class
+from flask_cors import CORS
 
 app = Flask(__name__, template_folder='templates')
+
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 
 @app.route('/')
 def index():
