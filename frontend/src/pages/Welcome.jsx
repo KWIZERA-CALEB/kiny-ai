@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Navigation from '../components/molecules/Navigation'
-import { Button, Dialog, Input, DialogHeader, DialogBody, DialogFooter } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react"
+import { Link } from 'react-router-dom'
 
 const Welcome = () => {
-    const [open, setOpen] = useState(false)
-    const handleOpen = () => setOpen(!open)
+    
   return (
     <div>
         <Navigation />
@@ -17,34 +17,10 @@ const Welcome = () => {
                 <p className='text-center text-[16px] text-gray-500 poppins cursor-pointer select-none'>Explore a diverse array of styles, colors, and themes within our collection, granting you the power to curate the ideal art piece of your space</p>
             </div>
             <div className='flex mt-[20px] flex-row space-x-[20px] justify-center'>
-                <Button className='rounded-full bg-gradient poppins' onClick={handleOpen} variant="gradient">Get Started</Button>
+                <Button className='rounded-full bg-gradient poppins' variant="gradient"><Link to='/register'>Get Started</Link></Button>
                 <Button className='bg-white text-slate-400 poppins border-blue-500 border-solid border-[2px] rounded-full'>Learn More</Button>
             </div>
         </div>
-
-        <Dialog open={open} className='p-[30px]' handler={handleOpen}>
-            <div className='flex justify-center'><p className='poppins uppercase text-[18px] cursor-pointer font-bold'>Mwalimu.ai</p></div>
-            <div className='w-full mt-[20px]'>
-                <form className='flex flex-col space-y-[10px]'>
-                    <div>
-                        <input type='text' className='w-full border-blue-500 border-solid border-[2px] rounded-full pt-[20px] poppins-regular text-[14px] pb-[20px] pr-[10px] pl-[10px] h-[20px]' placeholder='Email' />
-                    </div>
-                    <div>
-                        <input type='text' className='w-full border-blue-500 border-solid border-[2px] rounded-full pt-[20px] poppins-regular text-[14px] pb-[20px] pr-[10px] pl-[10px] h-[20px]' placeholder='Username' />
-                    </div>
-                    <div>
-                        <input type='text' className='w-full border-blue-500 border-solid border-[2px] rounded-full pt-[20px] poppins-regular text-[14px] pb-[20px] pr-[10px] pl-[10px] h-[20px]' placeholder='Password' />
-                    </div>
-                    <div>
-                        <Button className='bg-blue-500 w-full rounded-full'>Login</Button>  
-                    </div>
-                </form>
-            </div>
-            <DialogFooter></DialogFooter>
-        </Dialog>
-
-      
-
     </div>
   )
 }
