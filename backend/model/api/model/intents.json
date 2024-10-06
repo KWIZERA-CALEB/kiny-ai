@@ -1,0 +1,93 @@
+{
+  "intents": [
+    {
+      "tag": "gusuhuza",
+      "patterns": ["Muraho!", "Bite sha?", "Amashyo", "Mwaramutse?", "Mwiriwe?", "Komera!", "Muramuke!", "Amakuru ki?"],
+      "responses": ["Amashyongore!", "Mwaramutse!", "Mwiriwe!", "Ndakomeye", "Muramuke!", "Ni meza, urifuza iki uyu munsi?"]
+    },
+    {
+      "tag": "gusezera",
+      "patterns": ["Murabeho!", "Turongera kuvugana", "Nkwifurije umunsi mwiza!", "Turasezeranye!", "Turongera ejo!"],
+      "responses": ["Murabeho!", "Uzagire amahoro!", "Nkwifurije ibyiza!", "Twongere ejo!"]
+    },
+    {
+      "tag": "kwandika_ibaruwa_ya_gicuti",
+      "patterns": ["Nshaka kwandika ibaruwa y'ubutumwa.", "Nkeneye ibaruwa y'ubutumwa bwiza.", "ndashaka kwandikira incuti ibaruwa"],
+      "responses": ["[Itariki]\n\n[Izina ryawe]\n[Adresi yawe]\n[Umujyi, igihugu]\n\n[Izina ry'uwandikiwe]\n[Adresi y'uwandikiwe]\n[Umujyi, igihugu]\n\n**Muraho [Izina ry'uwandikiwe],**\n\n Nishimiye kukwandikira uyu munsi. Ndakeka ko umunsi wawe uhagaze neza. Nifuzaga kukubaza uko umeze, kuko umunsi wanjye wagendanye n'ibintu byinshi byiza.\n\n Ndibuka ibihe byiza twagiranye mu minsi yashize, cyane cyane ubwo twajyaga [shyiramo igikorwa cyiza mwakoze hamwe]. Nari nishimiye cyane. Nkwifurije umunsi mwiza kandi ntegereje igisubizo cyawe! **Urakoze,**\n [Izina ryawe]"]
+    },
+    {
+      "tag": "gusobanura_mudasobwa",
+      "patterns": ["Uko mudasobwa ikora?", "Mudasobwa ni iki?", "Nkeneye kumenya mudasobwa.", "Sobanura ibijyanye na mudasobwa."],
+      "responses": ["Mudasobwa ni igikoresho gikoreshwa mu gukoresha software, ibarura, no gukora ibindi bikorwa byinshi. Ikora hifashishijwe ibice bitandukanye nka CPU, RAM, na disk."]
+    },
+    {
+      "tag": "kwigisha_ikinyarwanda",
+      "patterns": ["Nshaka kwiga ikinyarwanda.", "Uko nakwiga ikinyarwanda?", "Nkeneye ubufasha mu kwiga ikinyarwanda."],
+      "responses": ["Ikibazo ni ingenzi mu kwiga ikinyarwanda. Tangira uganira, usome, kandi wumve! Nzakurangira ibitabo byiza."]
+    },
+    {
+      "tag": "kubaza_izina",
+      "patterns": ["Izina ry'iyi AI ni irihe?", "Nkeneye kumenya izina ryayo.", "Ubu ni Mwalimu.ai?"],
+      "responses": ["Yego, izina ry'iyi AI ni Mwalimu.ai! Ni umufasha mu kwigisha no gusobanura."]
+    },
+    {
+      "tag": "gutereta_umukobwa",
+      "patterns": ["Nshaka gutereta umukobwa.", "Nkeneye ibitekerezo byo gutereta umukobwa.", "Mpa imitoma yo gutereta umukobwa."],
+      "responses": [
+        "Uri umucyo ugaragaza ahantu hose, ndakunda uko ubona isi.",
+        "Nkumva nk'uburanga bw'inyoni, ubuzima bwanjye buhimbaza kubera wowe.",
+        "Nk'uko twahuriye [shyiramo ahantu mwajyanye], numvise ukuntu unyiyunguruza mu mutima.",
+        "Nkwifurije umunsi mwiza, ntegereje kuzabona umucyo wawe wose."
+      ]
+    },
+    {
+      "tag": "gusobanura_programming",
+      "patterns": ["Uko programming ikora?", "Nkeneye gusobanurirwa programming.", "Ni iki programming?"],
+      "responses": ["Programming ni uburyo bwo guhanga software, aho ukoresha indimi nka Python, Java, cyangwa C++. Ni ingenzi mu ikoranabuhanga."]
+    },
+    {
+      "tag": "kwizera_caleb",
+      "patterns": ["Uwayikoze ni nde?", "Ni nde Kwizera Caleb?", "Mbwira ibijyanye na Kwizera Caleb."],
+      "responses": ["Kwizera Caleb ni umu developer wo mu Rwanda, ukora ku mishinga itandukanye ya software, kandi afasha abantu gukoresha ikoranabuhanga mu buryo bwiza."]
+    },
+    {
+      "tag": "intara_n_uturere",
+      "patterns": ["Nshaka kumenya intara n'uturere mu Rwanda.", "Mbwira intara n'uturere tw'u Rwanda.", "Ni izihe ntara n'uturere mu Rwanda?"],
+      "responses": ["Mu Rwanda, hari intara enye: Intara y'Amajyepfo, Intara y'Amajyaruguru, Intara y'Iburengerazuba, n'Intara y'Iburayi. Uturere tugera kuri 30 mu gihugu."]
+    },
+    {
+      "tag": "perezida_wu_rwanda",
+      "patterns": ["Ubu perezida w'u Rwanda ni nde?", "Mbwira ibijyanye na perezida w'u Rwanda.", "Ninde uyobora u Rwanda?"],
+      "responses": ["Perezida w'u Rwanda ni Paul Kagame, amaze igihe kinini ayobora igihugu kuva mu mwaka wa 2000."]
+    },
+    {
+      "tag": "ibibazo_perimis",
+      "patterns": ["Nkeneye ibibazo kuri perimis provisoire", "Ibibazo by'ikizamini cya perimis provisoire"],
+      "responses": [
+        "1. Abana badafite imyaka kurikira ntibemerewe gutwara ku ntebe y'imbere y'imodoka: A. 7, B. 10, C. 12, D. Ta gisubizo cy’ukuri.",
+        "2. Iyo hatari utuyira tw'abanyamagare cyangwa inkengero, abanyamaguru bagomba kugenda: A. Mu muhanda, B. Mu tuyira tw'abanyamagare, C. Ku musezero, D. Ibisubizo byose."
+      ]
+    },
+    {
+      "tag": "impombo_yohereza_ibyotsi",
+      "patterns": ["Nkeneye ibibazo kuri impombo yohereza ibyotsi", "Ibibazo byerekeye impombo yohereza ibyotsi"],
+      "responses": [
+        "Isonga y'impombo yohereza ibyotsi ntishobora kwerekezwa aha hakurikira: A. Ibumoso, B. Iburyo, C. Inyuma, D. Ta gisubizo cy’ukuri."
+      ]
+    },
+    {
+      "tag": "ibinyabiziga_tara",
+      "patterns": ["Ibibazo kuri ibinyabiziga bigomba kugira tara ry'ubururu", "Ibibazo kuri ibinyabiziga bifite tara ry'ubururu"],
+      "responses": [
+        "Ibinyabiziga bigomba kugira tara ry'ubururu rimyatsa ni: A. Ibinyabiziga biherekeranye mu butumwa, B. Ibinyabiziga bya gisirikare, C. Injenyeri n'ikimuriganda, D. Ibisubizo byose."
+      ]
+    },
+    {
+      "tag": "amatara_indanga_mbere",
+      "patterns": ["Ibibazo ku matara ndanga mbere n'aya nyuma", "Nkeneye ibibazo ku matara y'imodoka zitarengeje metero 6"],
+      "responses": [
+        "Amatara yo guhagarara igihe imodoka ihagaze mu nsisiro afite amabara: A. Yera cyangwa umuhondo imbere, B. Umutuku cyangwa umuhondo inyuma, C. A na B, D. Ta gisubizo cy’ukuri."
+      ]
+    }
+  ]
+}
