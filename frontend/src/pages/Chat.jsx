@@ -75,7 +75,7 @@ const Chat = () => {
                         <div className='flex flex-row justify-between space-x-[15px] p-[20px] w-[600px]'>
                             <textarea spellcheck="false" value={message} autocorrect="off" placeholder='Andika Ikibazo' onChange={handleMessageChange} className='flex-1 overflow-y-hidden pl-[12px] w-full border-solid border-[1px] border-gray-400 pt-[12px] focus:outline-blue-500 poppins-regular text-[12px] text-slate-300 rounded-[10px] pb-[12px]'></textarea>
                             {message === '' ? 
-                                <Button onClick={sendChatMessage} disabled className='pr-[12px] disabled pl-[12px] pt-[3px] pb-[3px] h-[40px] bg-blue-500 outline-0 cursor-pointer poppins text-[12px] rounded-[6px] text-white'>Send</Button>
+                                <Button type="button" className='pr-[12px] cursor-not-allowed pl-[12px] pt-[3px] pb-[3px] h-[40px] bg-blue-500/[50%] outline-0 poppins text-[12px] rounded-[6px] text-white'>Send</Button>
                                 :
                                 <Button onClick={sendChatMessage} className='pr-[12px] pl-[12px] pt-[3px] pb-[3px] h-[40px] bg-blue-500 outline-0 cursor-pointer poppins text-[12px] rounded-[6px] text-white'>Send</Button>
                                 

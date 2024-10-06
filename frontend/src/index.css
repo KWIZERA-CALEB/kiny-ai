@@ -33,9 +33,6 @@ body {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
 }
-.disabled {
-    cursor: not-allowed;
-}
 
 ::-webkit-scrollbar {
     width: 6px;

@@ -1,7 +1,12 @@
+import os
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 import random
 import json
 import pickle
 import numpy as np
+from django.conf import settings
 
 import nltk
 from nltk.stem import WordNetLemmatizer
@@ -12,6 +17,11 @@ nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 
+classes_file_path = os.path.join(settings.BASE_DIR,  'model', 'api', 'model', 'classes.pkl')
+words_file_path = os.path.join(settings.BASE_DIR,  'model', 'api', 'model', 'words.pkl')
+intents_file_path = os.path.join(settings.BASE_DIR,  'model', 'api', 'model', 'intents.json')
+model_file_path = os.path.join(settings.BASE_DIR,  'model', 'api', 'model', 'chatbot_model.keras')
+
 def clean_up_sentence(sentence):
     lemmatizer = WordNetLemmatizer()
 
@@ -21,7 +31,7 @@ def clean_up_sentence(sentence):
     return sentence_words
 
 def bag_of_words(sentence):
-    words = pickle.load(open('model/words.pkl', 'rb'))
+    words = pickle.load(open(words_file_path , 'rb'))
 
     sentence_words = clean_up_sentence(sentence)
     bag = [0] * len(words)
@@ -32,8 +42,8 @@ def bag_of_words(sentence):
     return np.array(bag)
 
 def predict_class(sentence):
-    classes = pickle.load(open('model/classes.pkl', 'rb'))
-    model = load_model('model/chatbot_model.keras')
+    classes = pickle.load(open(classes_file_path, 'rb'))
+    model = load_model(model_file_path)
 
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
@@ -50,7 +60,7 @@ def predict_class(sentence):
     return return_list
 
 def get_response(intents_list):
-    intents_json = json.load(open('model/intents.json'))
+    intents_json = json.load(open(intents_file_path))
 
     tag = intents_list[0]['intent']
     list_of_intents = intents_json['intents']
