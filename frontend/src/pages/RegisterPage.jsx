@@ -1,7 +1,58 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { registerUser } from '../services/authservice'
 
 const RegisterPage = () => {
+    const [firstName, setFirstName] = useState('')
+    const [secondName, setSecondName] = useState('')
+    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate()
+
+    const handleFirstNameChange = (e) => {
+        setFirstName(e.target.value)
+    }
+
+    const handleSecondNameChange = (e) => {
+        setSecondName(e.target.value)
+    }
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handleUsernameChange = (e) => {
+        setUserName(e.target.value)
+    }
+
+    const handleRegister = async (e) => {
+        e.preventDefault()
+        setLoading(true)
+        try {
+            const data = {
+                first_name: firstName,
+                last_name: secondName,
+                username: userName,
+                email: email,
+                password: password
+            }
+            const newUser = await registerUser(data)
+            setLoading(false)
+            navigate('/login')
+            return newUser
+        } catch(error) {
+            console.log(`Error occured ${error}`)
+            setPassword('')
+            throw error
+        }
+    }
   return (
     <div className='bg-white p-[20px] w-full h-[100vh] flex flex-row space-x-[20px]'>
         <div className='w-[40%] hidden md:block relative h-full'>
@@ -23,18 +74,29 @@ const RegisterPage = () => {
                     <form>
                         <div className='flex flex-col space-y-[15px]'>
                             <div className='flex flex-row space-x-[15px]'>
-                                <input type="text" className='pl-[12px] w-[50%] border-solid border-[2px] border-gray-400 pt-[12px] text-[12px] focus:outline-blue-500 poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='First Name' />
-                                <input type="text" className='pl-[12px] w-[50%] border-solid border-[2px] border-gray-400 pt-[12px] text-[12px] focus:outline-blue-500 poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='Second Name' />
+                                <input onChange={handleFirstNameChange} type="text" className='pl-[12px] w-[50%] border-solid border-[2px] border-gray-400 pt-[12px] text-[12px] focus:outline-blue-500 poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='First Name' />
+                                <input onChange={handleSecondNameChange} type="text" className='pl-[12px] w-[50%] border-solid border-[2px] border-gray-400 pt-[12px] text-[12px] focus:outline-blue-500 poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='Second Name' />
                             </div>
                             <div>
-                                <input type="text" className='pl-[12px] w-full border-solid border-[2px] border-gray-400 pt-[12px] text-[12px] focus:outline-blue-500 poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='Email' />
+                                <input onChange={handleUsernameChange} type="text" className='pl-[12px] w-full border-solid border-[2px] border-gray-400 pt-[12px] text-[12px] focus:outline-blue-500 poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='Username' />
                             </div>
                             <div>
-                                <input type="text" className='pl-[12px] w-full border-solid border-[2px] border-gray-400 pt-[12px] text-[12px] focus:outline-blue-500 poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='Password' />
+                                <input onChange={handleEmailChange} type="text" className='pl-[12px] w-full border-solid border-[2px] border-gray-400 pt-[12px] text-[12px] focus:outline-blue-500 poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='Email' />
                             </div>
                             <div>
-                                <button className='w-full pt-[12px] pb-[12px] bg-blue-500 outline-0 cursor-pointer poppins text-[14px] rounded-[20px] text-white'>Create Account</button>
+                                <input onChange={handlePasswordChange} type="text" className='pl-[12px] w-full border-solid border-[2px] border-gray-400 pt-[12px] text-[12px] focus:outline-blue-500 poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='Password' />
                             </div>
+                            {
+                                loading ? 
+                                <div>
+                                    <button type='button' className='w-full pt-[12px] cursor-not-allowed pb-[12px] bg-blue-500/[50%] outline-0 poppins text-[14px] rounded-[20px] text-white'>Loading</button>
+                                </div>
+                            :
+                                <div>
+                                    <button type='button' onClick={handleRegister} className='w-full pt-[12px] pb-[12px] bg-blue-500 outline-0 cursor-pointer poppins text-[14px] rounded-[20px] text-white'>Create Account</button>
+                                </div>
+                            }
+                            
                         </div>
                     </form>
                 </div>
