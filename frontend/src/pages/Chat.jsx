@@ -10,6 +10,11 @@ const Chat = () => {
     const handleOpen = () => setOpen(!open)
     const chatEndRef = useRef(null);
 
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        console.log(token)
+    }, [])
+
     const handleMessageChange = (e) => {
         setMessage(e.target.value)
     }
@@ -73,7 +78,7 @@ const Chat = () => {
                 <div className='fixed bottom-0 z-50 bg-white items-center flex shadow-2xl justify-center w-full min-h-[120px]'>
                     <form>
                         <div className='flex flex-row justify-between space-x-[15px] p-[20px] w-[600px]'>
-                            <textarea spellcheck="false" value={message} autocorrect="off" placeholder='Andika Ikibazo' onChange={handleMessageChange} className='flex-1 overflow-y-hidden pl-[12px] w-full border-solid border-[1px] border-gray-400 pt-[12px] focus:outline-blue-500 poppins-regular text-[12px] text-slate-300 rounded-[10px] pb-[12px]'></textarea>
+                            <textarea spellCheck="false" value={message} autoCorrect="off" placeholder='Andika Ikibazo' onChange={handleMessageChange} className='flex-1 overflow-y-hidden pl-[12px] w-full border-solid border-[1px] border-gray-400 pt-[12px] focus:outline-blue-500 poppins-regular text-[12px] text-slate-300 rounded-[10px] pb-[12px]'></textarea>
                             {message === '' ? 
                                 <Button type="button" className='pr-[12px] cursor-not-allowed pl-[12px] pt-[3px] pb-[3px] h-[40px] bg-blue-500/[50%] outline-0 poppins text-[12px] rounded-[6px] text-white'>Send</Button>
                                 :
