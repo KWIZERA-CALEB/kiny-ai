@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginUser } from '../services/authservice'
+import toast from 'react-hot-toast'
 
 const LoginPage = () => {
     const [username, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
     const navigate = useNavigate()
 
@@ -28,6 +30,11 @@ const LoginPage = () => {
         e.preventDefault()
         setLoading(true)
         try {
+            if(!username || !password) {
+                setError(true)
+                setLoading(false)
+                return false
+            }
             const data = {
                 username: username,
                 password: password
@@ -37,10 +44,16 @@ const LoginPage = () => {
             setLoading(false)
             localStorage.setItem('token', response.access)
             localStorage.setItem('refresh', response.refresh)
+            setTimeout(() => {
+                toast.custom(<div className='bg-green-500 px-4 py-2 text-[12px] rounded-md text-white select-none poppins'>You are logined</div>)
+            }, 6000)
             navigate('/chat')
             return response
         } catch(error) {
             console.log(`Error occured ${error}`)
+            // console.log(error.response.data.password[0])
+            toast.custom(<div className='bg-red-500 px-4 py-2 text-[12px] rounded-md text-white select-none poppins'>{error?.response?.data?.detail || 'An unexpected error occurred.'}</div>)
+            setLoading(false)
             setPassword('')
             throw error
         }
@@ -56,10 +69,12 @@ const LoginPage = () => {
                     <form>
                         <div className='flex flex-col space-y-[15px]'>
                             <div>
-                                <input type="text" onChange={handleUserNameChange} className='pl-[12px] w-full border-solid border-[2px] border-gray-400 pt-[12px] focus:outline-blue-500 text-[12px] poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='Email' />
+                                <input type="text" onChange={handleUserNameChange} className={`pl-[12px] w-full border-solid border-[2px] ${error && !username ? 'border-red-500' : 'border-gray-400'} pt-[12px] ${error && !username ? 'focus:outline-red-500' : 'focus:outline-blue-500'} text-[12px] poppins-regular text-slate-300 rounded-[20px] pb-[12px]`} placeholder='Username' />
+                                {error && !username && <span className="text-red-500 poppins text-[10px] select-none font-bold">Username required</span>}
                             </div>
                             <div>
-                                <input type="text" onChange={handlePasswordChange} className='pl-[12px] w-full border-solid border-[2px] border-gray-400 pt-[12px] focus:outline-blue-500 text-[12px] poppins-regular text-slate-300 rounded-[20px] pb-[12px]' placeholder='Password' />
+                                <input type="password" value={password} onChange={handlePasswordChange} className={`pl-[12px] w-full border-solid border-[2px] ${error && !password ? 'border-red-500' : 'border-gray-400'} pt-[12px] ${error && !password ? 'focus:outline-red-500' : 'focus:outline-blue-500'} text-[12px] poppins-regular text-slate-300 rounded-[20px] pb-[12px]`} placeholder='Password' />
+                                {error && !password && <span className="text-red-500 poppins text-[10px] select-none font-bold">Password required</span>}
                             </div>
                             {
                                 loading ? 
