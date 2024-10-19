@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerUser } from '../services/authservice'
 
@@ -11,6 +11,13 @@ const RegisterPage = () => {
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (token) {
+            navigate('/chat')
+        }
+    }, [])
 
     const handleFirstNameChange = (e) => {
         setFirstName(e.target.value)

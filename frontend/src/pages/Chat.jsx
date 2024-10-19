@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { handleChatMessage } from '../services/chatservice';
 import { Button, Dialog, Input, DialogHeader, DialogBody, DialogFooter } from "@material-tailwind/react";
+import { useNavigate } from 'react-router-dom'
+import { userInfo, refreshToken } from '../services/authservice';
+import { isTokenExpired } from '../utils/verifytoken';
 
 
 const Chat = () => {
@@ -9,10 +12,73 @@ const Chat = () => {
     const [chatHistory, setChatHistory] = useState([])
     const handleOpen = () => setOpen(!open)
     const chatEndRef = useRef(null);
+    const [userData, setUserData] = useState({})
+
+    const navigate = useNavigate()
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
-        console.log(token)
+        const checkAuthToken = async () => {
+            try {
+                const token = localStorage.getItem('token')
+                if(!token) {
+                    navigate('/login')
+                }
+
+                if (isTokenExpired(token)) {
+                    const refresh = localStorage.getItem('refresh')
+                    const response = await refreshToken(refresh)
+
+                    if (response.code === 'token_not_valid') {
+                        navigate('/login')
+                    }
+
+                    if (response) {
+                        localStorage.setItem('token', response.access)
+                        localStorage.setItem('refresh', response.refresh)
+                    }
+                }
+
+                
+            } catch(error) {
+                console.log(`Error occured ${error}`)
+                throw error
+            }
+        }
+
+        checkAuthToken()
+    }, [navigate])
+
+    useEffect(() => {
+        const handleRefreshToken = async () => {
+            try {
+                const refresh = localStorage.getItem('refresh')
+                const response = await refreshToken(refresh)
+
+                if (response) {
+                    localStorage.setItem('token', response.access)
+                    localStorage.setItem('refresh', response.refresh)
+                }
+            } catch(error) {
+                console.log(`Error occured ${error}`)
+                throw error
+            }
+        }
+        handleRefreshToken()
+    }, [])
+
+    useEffect(() => {
+        const fetchLoginedUserInfo = async () => {
+            try {
+                const token = localStorage.getItem('token')
+                const user = await userInfo(token)
+                setUserData(user)
+                return user
+            } catch(error) {
+                console.log(`Error occured ${error}`)
+                throw error
+            }
+        }
+        fetchLoginedUserInfo()
     }, [])
 
     const handleMessageChange = (e) => {
@@ -64,7 +130,7 @@ const Chat = () => {
                     <div className='text-white bg-blue-500 cursor-pointer rounded-full flex justify-center items-center w-[40px] h-[40px] poppins'><p>M</p></div>
                     <div title='New Chat' className='text-white bg-black cursor-pointer rounded-full flex justify-center items-center w-[40px] h-[40px] poppins'><p>+</p></div>
                 </div>
-                <div title='Kwizera Caleb' onClick={handleOpen}>
+                <div title={userData.username} onClick={handleOpen}>
                     <img src="/images/default.png" className='w-[40px] h-[40px] rounded-full object-cover object-center cursor-pointer' alt="Profile Image" />
                 </div>
             </div>
@@ -93,7 +159,7 @@ const Chat = () => {
 
         <Dialog open={open} handler={handleOpen}>
             <div className='w-full h-[120px] rounded-b-full relative flex justify-center mb-[30px] bg-blue-500'>
-                <h3 className='poppins text-white select-none curso-pointer absolute bottom-[20px] text-[25px]'>Hello Caleb</h3>
+                <h3 className='poppins text-white select-none curso-pointer absolute bottom-[20px] text-[25px]'>Hello {userData.username}</h3>
             </div>
         </Dialog>
     </>
