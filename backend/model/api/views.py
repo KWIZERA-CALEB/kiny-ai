@@ -7,6 +7,14 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import UserSerializer
 
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        'GET /api',
+    ]
+
+    return Response(routes)
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
