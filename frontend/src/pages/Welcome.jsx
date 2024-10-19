@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navigation from '../components/molecules/Navigation'
 import { Button } from "@material-tailwind/react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Welcome = () => {
+
+    const navigate = useNavigate()
+    
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (token) {
+            navigate('/chat')
+        }
+    }, [])
     
   return (
     <div>

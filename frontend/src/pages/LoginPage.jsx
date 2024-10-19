@@ -8,6 +8,14 @@ const LoginPage = () => {
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (token) {
+            navigate('/chat')
+        }
+    }, [])
+
     const handleUserNameChange = (e) => {
         setUserName(e.target.value)
     }
@@ -25,8 +33,10 @@ const LoginPage = () => {
                 password: password
             }
             const response = await loginUser(data)
+            console.log(response)
             setLoading(false)
             localStorage.setItem('token', response.access)
+            localStorage.setItem('refresh', response.refresh)
             navigate('/chat')
             return response
         } catch(error) {

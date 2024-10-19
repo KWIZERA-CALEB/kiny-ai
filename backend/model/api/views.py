@@ -45,3 +45,12 @@ def handleUserPrompt(request):
     response = get_response(intents_list)
 
     return Response({'response': response}, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def getUserInfo(request):
+    user = request.user
+    if user.is_authenticated:
+        serializer = UserSerializer(user, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
