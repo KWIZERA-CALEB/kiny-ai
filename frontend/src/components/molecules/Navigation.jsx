@@ -16,7 +16,7 @@ const Navigation = () => {
                 <p className={currentPath.pathname === '/blog' ? 'poppins bg-gradient bg-clip-text text-transparent cursor-pointer' : 'poppins text-gray-500 cursor-pointer'}>Blog</p>
             </Link>
         </div>
-        <div><p className='poppins uppercase cursor-pointer font-bold'>Mwalimu.ai</p></div>
+        <div><p className='poppins uppercase cursor-pointer font-bold'>Kiny.ai</p></div>
         <div>
             <Link to={'/privacy'}>
                 <p className={currentPath.pathname === '/privacy' ? 'poppins bg-gradient bg-clip-text text-transparent cursor-pointer' : 'poppins text-gray-500 cursor-pointer'}>Privacy</p>

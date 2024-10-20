@@ -94,7 +94,7 @@ const LoginPage = () => {
         <div className='w-[40%] hidden md:block relative h-full'>
             <img src="/images/login-banner.jfif" className='w-full image-effect h-full rounded-[20px] cursor-pointer' alt="Authentication Welcome image" />
             <div className='absolute bottom-[20px] z-40 left-[50%] transform -translate-x-1/2'>
-                <h4 className='poppins text-center select-none text-white'>Explore Kinyarwanda AI with Mwalimu.ai</h4>
+                <h4 className='poppins text-center select-none text-white'>Explore Kinyarwanda AI with KINY.ai</h4>
             </div>
             <div className='absolute top-[20px] z-40 left-[50%] transform -translate-x-1/2'>
                 <Link to={'/'}>
