@@ -1,9 +1,9 @@
-import React from 'react'
+import Chatbot from './components/Chatbot'
 
 const App = () => {
   return (
     <div>
-      Widget Soon
+      <Chatbot />
     </div>
   )
 }
