@@ -118,7 +118,19 @@ const Chat = () => {
     chatHistory.map((chat, index) => (
         appendedChatHistory.push(
             <div key={index} className={`flex ${chat.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`pl-[12px] pr-[12px] pt-[12px] pb-[12px] text-[12px] poppins-regular text-white rounded-[20px] ${chat.sender === 'user' ? 'bg-blue-500' : 'bg-black'}`}><p>{chat.text}</p></div>
+                <div className={`pl-[12px] pr-[12px] pt-[12px] pb-[12px] text-[12px] poppins-regular text-white rounded-[20px] ${chat.sender === 'user' ? 'bg-blue-500' : 'bg-black'}`}>
+                    {/* <p>{chat.text}</p> */}                
+                    {chat.text.includes('<img') ? (
+                        <div dangerouslySetInnerHTML={{ __html: chat.text }} />
+                    ) : (
+                        chat.text.split('\n').map((line, index) => (
+                            <span key={index}>
+                                {line}
+                                <br />
+                            </span>
+                        ))
+                    )}
+                </div>
             </div>
         )
     ))
