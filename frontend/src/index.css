@@ -1,33 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Irish+Grover&family=Lato:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@font-face {
-    font-family: poppins;
-    src: url('/fonts/Poppins-SemiBold.ttf');
-}
-
-.poppins {
-    font-family: poppins;
-}
-
-body {
-    padding-bottom: 140px;
-}
-
-@font-face {
-    font-family: poppins-regular;
-    src: url('/fonts/Poppins-SemiBold.ttf');
-}
-
-.poppins-regular {
-    font-family: poppins-regular;
-}
-
-
-.bg-gradient {
-    background-image: linear-gradient(to right, #6366F1, #38BDF8, #10B981);
-}
 
 .image-effect {
     -webkit-filter: grayscale(100%);
@@ -51,5 +25,5 @@ body {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #03a9f4; 
+    background: #00796B; 
 }
