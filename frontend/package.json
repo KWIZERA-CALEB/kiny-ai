@@ -1,5 +1,5 @@
 {
-  "name": "mwalimu-ai",
+  "name": "kiny-ai",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@material-tailwind/react": "^2.1.9",
     "antd": "^5.22.5",
     "axios": "^1.7.7",
     "react": "^18.2.0",

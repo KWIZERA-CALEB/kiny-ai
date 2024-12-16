@@ -1,14 +1,19 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
   build: {
     lib: {
-      entry: './src/main.tsx',
+      entry: path.resolve(__dirname, './src/components/ChatbotWidget.tsx'),
       name: 'ChatbotWidget',
-      fileName: (format) => `chatbot-widget.${format}.js`,
+      fileName: 'chatbot-widget',
       formats: ['umd'],
     },
     rollupOptions: {
@@ -21,7 +26,4 @@ export default defineConfig({
       },
     },
   },
-  define: {
-    'process.env.NODE_ENV': JSON.stringify('production'), // Fallback for process.env
-  },
-})
+});

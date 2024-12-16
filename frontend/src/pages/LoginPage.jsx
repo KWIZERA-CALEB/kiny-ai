@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginUser } from '../services/authservice'
 import toast from 'react-hot-toast'
@@ -18,19 +18,79 @@ const LoginPage = () => {
         try {
             const signInResponse = await loginUser(data)
             console.log(signInResponse)
+
+            const { refresh, access } = signInResponse || {};
+
+            if (refresh && access) {
+                toast.success("Logged In Successfully", { 
+                    position: 'bottom-center',
+                    duration: 5000,            
+                    className: 'font-inter font-semibold text-[12px] cursor-pointer',
+                    style: {
+                        color: '#fff',        
+                        backgroundColor: '#15B392',
+                        padding: '6px 20px', 
+                    },
+                });
+
+                localStorage.setItem("token", signInResponse.access)
+                localStorage.setItem("refresh", signInResponse.refresh)
+
+                navigate('/chat')
+            }
             
         } catch(error) {
             setValue('password', '')
-            toast.error("An unexpected error occurred", { 
-                position: 'bottom-center',
-                duration: 5000,            
-                className: 'font-inter font-semibold text-[12px] cursor-pointer',
-                style: {
-                    color: '#fff',        
-                    backgroundColor: '#CC2B52',
-                    padding: '6px 20px', 
-                },
-            });
+            const errorResponse = error.response?.data;
+
+            if (errorResponse && typeof errorResponse === 'object') {
+                // Handle general error (e.g., "detail" field)
+                if (errorResponse.detail) {
+                    toast.error(errorResponse.detail, {
+                        position: 'bottom-center',
+                        duration: 5000,
+                        className: 'font-inter font-semibold text-[12px] cursor-pointer',
+                        style: {
+                            color: '#fff',
+                            backgroundColor: '#CC2B52',
+                            padding: '6px 20px',
+                        },
+                    });
+                }
+    
+                // Handle field-specific errors (e.g., { username: ["This field is required."] })
+                Object.keys(errorResponse).forEach((key) => {
+                    if (key !== 'detail') {
+                        const errorMessages = errorResponse[key];
+                        if (Array.isArray(errorMessages)) {
+                            errorMessages.forEach((message) => {
+                                toast.error(`${key}: ${message}`, {
+                                    position: 'bottom-center',
+                                    duration: 5000,
+                                    className: 'font-inter font-semibold text-[12px] cursor-pointer',
+                                    style: {
+                                        color: '#fff',
+                                        backgroundColor: '#CC2B52',
+                                        padding: '6px 20px',
+                                    },
+                                });
+                            });
+                        }
+                    }
+                });
+            } else {
+                toast.error("An unexpected error occurred", {
+                    position: 'bottom-center',
+                    duration: 5000,
+                    className: 'font-inter font-semibold text-[12px] cursor-pointer',
+                    style: {
+                        color: '#fff',
+                        backgroundColor: '#CC2B52',
+                        padding: '6px 20px',
+                    },
+                });
+            }
+    
         }
     }
 
@@ -67,23 +127,19 @@ const LoginPage = () => {
                 <div className='mt-[10px] w-full'>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Controller 
-                            name="email"
+                            name="username"
                             control={control}
                             rules={{ 
-                                required: 'Email is required', 
-                                pattern: {
-                                    value: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
-                                    message: 'Please enter a valid email address',
-                                },
+                                required: 'Username is required',
                                 }}
                             render={({ field }) => (
                                 <div className='mt-[17px]'>
-                                    <Input {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder='Email Address' />
+                                    <Input {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder='User Name' />
                                 </div>
                             )}
                         />
-                        {errors.email && (
-                            <p className='font-inter text-start text-[12px] font-normal text-[#FF204E]'>{errors.email.message}</p>
+                        {errors.username && (
+                            <p className='font-inter text-start text-[12px] font-normal text-[#FF204E]'>{errors.username.message}</p>
                         )}
                         <Controller 
                             name="password"

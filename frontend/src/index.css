@@ -27,3 +27,8 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #00796B; 
 }
+
+.custom-menu .ant-menu-item-selected {
+    background-color: transparent !important;
+    color: inherit !important;
+}
