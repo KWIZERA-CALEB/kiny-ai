@@ -6,10 +6,12 @@ import {
     useForm, Controller 
 } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { useLanguage } from '../contexts/languageContext';
 
 
 const RegisterPage = () => {
     const navigate = useNavigate()
+    const { language, translations } = useLanguage();
     
     
     const { control, handleSubmit, setValue, formState: {errors, isSubmitting} } = useForm()
@@ -91,27 +93,27 @@ const RegisterPage = () => {
     }
   return (
     <div className='w-full flex h-[100vh] flex-row justify-between'>
-        <div className='w-[50%] pt-[32px] pr-[60px] pl-[60px]'>
+        <div className='w-full pt-[32px] pr-[60px] pl-[60px] md:w-[50%]'>
             <div className='flex flex-row items-center justify-between'>
                 <div>
                     <p className='font-montserrat font-bold text-dark cursor-pointer'>Kiny AI</p>
                 </div>
                 <div>
                     <Link to='/'>
-                        <p className='font-inter cursor-pointer selection:bg-primary/50 selection:text-[#fff] font-semibold text-[12px]'>Back Home</p>
+                        <p className='font-inter cursor-pointer selection:bg-primary/50 selection:text-[#fff] font-semibold text-[12px]'>{translations[language].back_home}</p>
                     </Link>
                 </div>
             </div>
             <div className='mt-[144px]'>
                 <div>
                     <div>
-                        <p className='font-inter text-[15px] font-normal selection:bg-primary/50 selection:text-[#fff]'>START FOR FREE</p>
+                        <p className='font-inter text-[15px] font-normal selection:bg-primary/50 selection:text-[#fff]'>{translations[language].start_keyword}</p>
                     </div>
                     <div className='mt-[11px]'>
-                        <p className='font-montserrat font-bold text-dark selection:bg-primary/50 selection:text-[#fff]'>CREATE NEW ACCOUNT.</p>
+                        <p className='font-montserrat font-bold text-dark selection:bg-primary/50 selection:text-[#fff]'>{translations[language].create_account_heading}</p>
                     </div>
                     <div className='mt-[11px]'>
-                        <p className='font-inter text-start text-[12px] font-normal selection:bg-primary/50 selection:text-[#fff]'>Unlock the richness of Rwanda's heritage with AI-powered insights. Dive into stories,<br></br> poems, and wisdom written in the heart of Kinyarwanda.</p>
+                        <p className='font-inter text-start text-[12px] font-normal selection:bg-primary/50 selection:text-[#fff]'>{translations[language].create_account_subheading}</p>
                     </div>
                 </div>
                 <div className='mt-[10px] w-full'>
@@ -123,7 +125,7 @@ const RegisterPage = () => {
                                     control={control}
                                     rules={{ required: 'First Name is required'}}
                                     render={({ field }) => (
-                                        <Input {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder='First Name' />
+                                        <Input {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder={translations[language].first_name_placeholder} />
                                     )}
                                 />
                                 {errors.firstName && (
@@ -136,7 +138,7 @@ const RegisterPage = () => {
                                     control={control}
                                     rules={{ required: 'Second Name is required'}}
                                     render={({ field }) => (
-                                        <Input {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder='Second Name' />
+                                        <Input {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder={translations[language].second_name_placeholder} />
                                     )}
                                 />
                                 {errors.secondName && (
@@ -156,7 +158,7 @@ const RegisterPage = () => {
                                 }}
                             render={({ field }) => (
                                 <div className='mt-[17px]'>
-                                    <Input {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder='Email Address' />
+                                    <Input {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder={translations[language].email_placeholder} />
                                 </div>
                             )}
                         />
@@ -169,7 +171,7 @@ const RegisterPage = () => {
                             rules={{ required: 'Password is required'}}
                             render={({ field }) => (
                                 <div className='mt-[17px]'>
-                                    <Input.Password {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder='Password' />
+                                    <Input.Password {...field} className='pl-[20px] font-lato w-full pt-[12px] pb-[12px] rounded-[15px] border-solid border-[2px] focus:border-[#00796B] hover:border-[#00796B] border-[#FAF9F8]' placeholder={translations[language].password_placeholder} />
                                 </div>
                             )}
                         />
@@ -188,82 +190,15 @@ const RegisterPage = () => {
                         }
                     </form>
                     <div className='mt-[6px]'>
-                        <p className='font-inter cursor-pointer selection:bg-primary/50 selection:text-[#fff] font-semibold text-[12px]'>Not a new member? <span className='text-primary cursor-pointer hover:underline'><Link to='/login'>Log In</Link></span></p>
+                        <p className='font-inter cursor-pointer selection:bg-primary/50 selection:text-[#fff] font-semibold text-[12px]'>{translations[language].not_new_member} <span className='text-primary cursor-pointer hover:underline'><Link to='/login'>{translations[language].login_link}</Link></span></p>
                     </div>
                 </div>
             </div>
         </div>
-        <div className='w-[50%] h-full'>
+        <div className='w-[50%] hidden h-full md:flex'>
             <img src="/images/login-page-image.png" className='w-full h-full object-cover object-center' alt="signup-image" />
         </div>
     </div>
-    // <div className='bg-white p-[20px] w-full h-[100vh] flex flex-row space-x-[20px]'>
-    //     <div className='w-[40%] hidden md:block relative h-full'>
-    //         <img src="/images/login-banner.jfif" className='w-full image-effect h-full rounded-[20px] cursor-pointer' alt="Authentication Welcome image" />
-    //         <div className='absolute bottom-[20px] z-40 left-[50%] transform -translate-x-1/2'>
-    //             <h4 className='poppins text-center select-none text-white'>Explore Kinyarwanda AI with KINY.ai</h4>
-    //         </div>
-    //         <div className='absolute top-[20px] z-40 left-[50%] transform -translate-x-1/2'>
-    //             <Link to={'/'}>
-    //                 <button className='poppins text-[12px] bg-[#F1EAFF] pr-[6px] pl-[6px] pt-[3px] pb-[3px] rounded-full'>Back to website</button>
-    //             </Link>
-    //         </div>
-    //     </div>
-    //     <div className='w-full md:w-[60%] md:p-[30px] flex justify-center items-center'>
-    //         <div className='w-full md:p-[20px]'>
-    //             <h3 className='poppins text-slate-500 text-[30px] select-none cursor-pointer'>Create an account</h3>
-    //             <p className='poppins text-slate-300 text-[16px] select-none cursor-pointer'>Already have an account? <Link to={'/login'} className='text-blue-500 hover:underline'>Login</Link></p>
-    //             <div className='mt-[30px]'>
-    //                 <form>
-    //                     <div className='flex flex-col space-y-[15px]'>
-    //                         <div className='flex flex-row space-x-[15px] w-full'>
-    //                             <div className='flex flex-col w-[50%]'>
-    //                                 <input onChange={handleFirstNameChange} type="text" className={`pl-[12px] w-full border-solid border-[2px] ${error && !firstName ? 'border-red-500' : 'border-gray-400'} pt-[12px] text-[12px] ${error && !firstName ? 'focus:outline-red-500' : 'focus:outline-blue-500'} poppins-regular text-slate-300 rounded-[20px] pb-[12px]`} placeholder='First Name'/>
-    //                                 {error && !firstName && (
-    //                                     <span className="text-red-500 poppins text-[10px] select-none font-bold mt-1">
-    //                                         First name required
-    //                                     </span>
-    //                                 )}
-    //                             </div>
-    //                             <div className='flex flex-col w-[50%]'>
-    //                                 <input onChange={handleSecondNameChange} type="text" className={`pl-[12px] w-full border-solid border-[2px] ${error && !secondName ? 'border-red-500' : 'border-gray-400'} pt-[12px] text-[12px] ${error && !secondName ? 'focus:outline-red-500' : 'focus:outline-blue-500'} poppins-regular text-slate-300 rounded-[20px] pb-[12px]`} placeholder='Second Name'/>
-    //                                 {error && !secondName && (
-    //                                     <span className="text-red-500 poppins text-[10px] select-none font-bold mt-1">
-    //                                         Second name required
-    //                                     </span>
-    //                                 )}
-    //                             </div>
-                                
-    //                         </div>
-    //                         <div>
-    //                             <input onChange={handleUsernameChange} type="text" className={`pl-[12px] w-full border-solid border-[2px] ${error && !userName ? 'border-red-500' : 'border-gray-400'} pt-[12px] text-[12px] ${error && !userName ? 'focus:outline-red-500' : 'focus:outline-blue-500'} poppins-regular text-slate-300 rounded-[20px] pb-[12px]`} placeholder='Username' />
-    //                             {error && !userName && <span className="text-red-500 poppins text-[10px] select-none font-bold">Username required</span>}
-    //                         </div>
-    //                         <div>
-    //                             <input onChange={handleEmailChange} type="text" className={`pl-[12px] w-full border-solid border-[2px] ${error && !email ? 'border-red-500' : 'border-gray-400'} pt-[12px] text-[12px] ${error && !email ? 'focus:outline-red-500' : 'focus:outline-blue-500'} poppins-regular text-slate-300 rounded-[20px] pb-[12px]`} placeholder='Email' />
-    //                             {error && !email && <span className="text-red-500 poppins text-[10px] select-none font-bold">Email required</span>}
-    //                         </div>
-    //                         <div>
-    //                             <input onChange={handlePasswordChange} type="password" className={`pl-[12px] w-full border-solid border-[2px] ${error && !password ? 'border-red-500' : 'border-gray-400'} pt-[12px] text-[12px] ${error && !password ? 'focus:outline-red-500' : 'focus:outline-blue-500'} poppins-regular text-slate-300 rounded-[20px] pb-[12px]`} placeholder='Password' />
-    //                             {error && !password && <span className="text-red-500 poppins text-[10px] select-none font-bold">Password required</span>}
-    //                         </div>
-    //                         {
-    //                             loading ? 
-    //                             <div>
-    //                                 <button type='button' className='w-full pt-[12px] cursor-not-allowed pb-[12px] bg-blue-500/[50%] outline-0 poppins text-[14px] rounded-[20px] text-white'>Loading</button>
-    //                             </div>
-    //                         :
-    //                             <div>
-    //                                 <button type='button' onClick={handleRegister} className='w-full pt-[12px] pb-[12px] bg-blue-500 outline-0 cursor-pointer poppins text-[14px] rounded-[20px] text-white'>Create Account</button>
-    //                             </div>
-    //                         }
-                            
-    //                     </div>
-    //                 </form>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
   )
 }
 

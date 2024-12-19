@@ -98,10 +98,10 @@ const LoginPage = () => {
 
   return (
     <div className='w-full flex h-[100vh] flex-row justify-between'>
-        <div className='w-[50%] h-full'>
+        <div className='w-[50%] hidden h-full md:flex'>
             <img src="/images/login-page-image.png" className='w-full h-full object-cover object-center' alt="signup-image" />
         </div>
-        <div className='w-[50%] pt-[32px] pr-[60px] pl-[60px]'>
+        <div className='w-full pt-[32px] pr-[60px] pl-[60px] md:w-[50%]'>
             <div className='flex flex-row items-center justify-between'>
                 <div>
                     <p className='font-montserrat font-bold text-dark cursor-pointer'>Kiny AI</p>
