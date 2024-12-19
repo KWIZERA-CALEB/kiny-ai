@@ -8,6 +8,15 @@ export default {
         dark: '#000',
         neutral: '#FAF9F8',
       },
+      screens: {
+        sm: '640px',
+        
+        md: '784px',
+      
+        lg: '1024px',
+        
+        xl: '1280px',
+      },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],

@@ -5,6 +5,7 @@ import { Button, Input, Collapse } from "antd";
 import PricingSection from '../components/molecules/PricingSection';
 import Footer from '../components/molecules/Footer';
 import { Element } from 'react-scroll';
+import { useLanguage } from '../contexts/languageContext';
 
 const text = `
   Explore how AI bridges the past and the future by celebrating Kinyarwanda 
@@ -38,6 +39,8 @@ const items = [
 const Welcome = () => {
 
     const navigate = useNavigate()
+    const { language, translations } = useLanguage();
+
     
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -60,13 +63,16 @@ const Welcome = () => {
                     <p className='font-normal text-center text-[32px] font-irish selection:bg-primary/50 selection:text-[#fff]'>Kinyarwanda LLM</p>
                 </div>
                 <div className='mt-[31px]'>
-                    <p className='font-inter font-normal text-[30px] text-center selection:bg-primary/50 selection:text-[#fff]'>Discover the beauty of Kinyarwanda<br></br> literature</p>
+                    <p className='font-inter font-normal text-[20px] text-center selection:bg-primary/50 selection:text-[#fff] md:text-[30px]'>{translations[language].banner_welcome_big_text}</p>
                 </div>
                 <div className='mt-[16px]'>
-                    <p className='font-lato font-normal text-[15px] text-center selection:bg-primary/50 selection:text-[#fff]'>Unlock the richness of Rwanda's heritage with AI-powered insights. Dive into stories,<br></br> poems, and wisdom written in the heart of Kinyarwanda.</p>
+                    <p
+                        className='font-lato font-normal text-[12px] text-center selection:bg-primary/50 selection:text-[#fff] md:text-[15px]'
+                        dangerouslySetInnerHTML={{ __html: translations[language].banner_welcome_sub_text }}
+                    />
                 </div>
                 <div className='mt-[33px] w-full flex justify-center'>
-                    <Button className='bg-primary text-[#fff] font-lato font-normal text-[12px] rounded-full cursor-pointer pr-[30px] pl-[30px] pt-[13px] pb-[13px]'>Launch App</Button>
+                    <Button className='bg-primary text-[#fff] font-lato font-normal text-[12px] rounded-full cursor-pointer pr-[30px] pl-[30px] pt-[13px] pb-[13px]'>{translations[language].launch_app_link}</Button>
                 </div>
             </div>
             <div className='mt-[32px] w-full flex justify-center'>
@@ -74,45 +80,45 @@ const Welcome = () => {
             </div>
         </div>
 
-        <div className='w-full mt-[105px] flex flex-row pr-[74px] pl-[74px] justify-between'>
-            <div className='w-[50%]'>
+        <div className='w-full mt-[105px] flex flex-col pr-[20px] pl-[20px] justify-between md:flex-row md:pr-[74px] md:pl-[74px]'>
+            <div className='w-full md:w-[50%]'>
                 <img src="/images/vr-pic.png" className='w-full' alt="VR image" />
             </div>
-            <div className='w-[50%]'>
+            <div className='w-full md:w-[50%]'>
                 <div>
                     <Element name="about">
-                        <p className='font-inter font-normal text-[15px] selection:bg-primary/50 selection:text-[#fff] text-start'>ABOUT KINY AI</p>
+                        <p className='font-inter font-normal text-[15px] selection:bg-primary/50 selection:text-[#fff] text-start'>{translations[language].about_title}</p>
                     </Element>
                 </div>
                 <div className='mt-[6px]'>
-                    <p className='font-inter font-normal text-[25px] selection:bg-primary/50 selection:text-[#fff] text-start'>Bringing Knowledge to Life with the Power of AI</p>
+                    <p className='font-inter font-normal text-[20px] selection:bg-primary/50 selection:text-[#fff] text-start md:text-[25px]'>{translations[language].tagline}</p>
                 </div>
                 <div className='mt-[9px]'>
-                    <p className='font-lato font-normal text-[15px] selection:bg-primary/50 selection:text-[#fff] text-start'>Explore how AI bridges the past and the future by celebrating Kinyarwanda literature. Our platform preserves Rwanda's rich linguistic and cultural heritage while empowering learners and creators. Together, we make tradition accessible to inspire the next generation.</p>
+                    <p className='font-lato font-normal text-[15px] selection:bg-primary/50 selection:text-[#fff] text-start'>{translations[language].about_description}</p>
                 </div>
                 <div className='mt-[23px] flex flex-col space-y-[4px]'>
                     <div className='flex flex-row space-x-[4px] items-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00796B" width="24" height="24">
                             <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path>
                         </svg>
-                        <p className='font-inter font-normal text-[12px] selection:bg-primary/50 selection:text-[#fff]'>Kinyarwanda Chatbot</p>
+                        <p className='font-inter font-normal text-[12px] selection:bg-primary/50 selection:text-[#fff]'>{translations[language].kinyarwanda_chatbot}</p>
                     </div>
                     <div className='flex flex-row space-x-[4px] items-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00796B" width="24" height="24">
                             <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path>
                         </svg>
-                        <p className='font-inter font-normal text-[12px] selection:bg-primary/50 selection:text-[#fff]'>Integration in other sites</p>
+                        <p className='font-inter font-normal text-[12px] selection:bg-primary/50 selection:text-[#fff]'>{translations[language].integration_in_sites_word}</p>
                     </div>
                     <div className='flex flex-row space-x-[4px] items-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00796B" width="24" height="24">
                             <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path>
                         </svg>
-                        <p className='font-inter font-normal text-[12px] selection:bg-primary/50 selection:text-[#fff]'>Voice Assistants and Translation</p>
+                        <p className='font-inter font-normal text-[12px] selection:bg-primary/50 selection:text-[#fff]'>{translations[language].voice_assistants}</p>
                     </div>
                 </div>
                 {/* button launch */}
                 <div className='mt-[14px]'>
-                    <Button className='bg-primary text-[#fff] font-lato font-normal text-[12px] rounded-full cursor-pointer pr-[30px] pl-[30px] pt-[13px] pb-[13px]'>Launch App</Button>
+                    <Button className='bg-primary text-[#fff] font-lato font-normal text-[12px] rounded-full cursor-pointer pr-[30px] pl-[30px] pt-[13px] pb-[13px]'>{translations[language].launch_app_link}</Button>
                 </div>
                 {/* button launch */}
             </div>
@@ -120,7 +126,7 @@ const Welcome = () => {
 
         <PricingSection />
 
-        <div className='mt-[54px] w-full pr-[74px] pl-[74px] pt-[43px] pb-[43px] bg-primary'>
+        <div className='mt-[54px] w-full pr-[20px] pl-[20px] pt-[43px] pb-[43px] bg-primary md:pr-[74px] md:pl-[74px]'>
             <div>
                 <div>
                     <p className="font-inter font-normal text-[#fff] text-[15px] text-center selection:bg-primary/50 selection:text-[#fff]">FEATURES</p>
@@ -129,7 +135,7 @@ const Welcome = () => {
                     <p className="font-inter font-normal text-[#fff] text-[25px] text-center selection:bg-primary/50 selection:text-[#fff]">Experience Kiny AI Features.</p>
                 </div>
             </div>
-            <div className='mt-[30px] flex flex-row justify-center space-x-[47px]'>
+            <div className='mt-[30px] flex flex-col justify-center space-y-[10px] space-x-[0px] md:space-y-[0px] md:space-x-[44px] md:flex-row'>
                 {/* feature one */}
                 <div className='bg-[#fff] rounded-[20px] p-[25px]'>
                     <div className='w-full flex justify-center'>
@@ -203,7 +209,7 @@ const Welcome = () => {
             </div>
         </div>
 
-        <div className='w-full mt-[54px] pr-[74px] pl-[74px]'>
+        <div className='w-full mt-[54px] pr-[20px] pl-[20px] md:pr-[74px] md:pl-[74px]'>
             <div>
                 <p className="font-inter font-normal text-[15px] text-center selection:bg-primary/50 selection:text-[#fff]">FREQUENTLY ASKED QUESTIONS</p>
             </div>

@@ -5,7 +5,7 @@ import { Element } from 'react-scroll';
 
 const PricingSection = () => {
   return (
-    <div className='mt-[113px] pr-[74px] pl-[74px]'>
+    <div className='mt-[113px] pr-[20px] pl-[20px] md:pr-[74px] md:pl-[74px]'>
         <div>
             <Element name="pricing">
                 <p className="font-inter font-normal text-[15px] text-center selection:bg-primary/50 selection:text-[#fff]">PRICING</p>
@@ -26,9 +26,9 @@ const PricingSection = () => {
             </div>
         </div>
         {/* the pricings cards */}
-        <div className='flex flex-row justify-between items-start mt-[38px] w-full space-x-[44px]'>
+        <div className='flex flex-col justify-between items-start mt-[38px] w-full space-y-[10px] space-x-[0px] md:space-y-[0px] md:space-x-[44px] md:flex-row'>
             {/* single card */}
-            <div className='bg-neutral p-[32px] w-[347px] rounded-[20px]'>
+            <div className='bg-neutral p-[32px] w-full rounded-[20px] md:w-[347px]'>
                 <div className='w-[40px] h-[40px] rounded-full'>
                     <img src="/images/basic-icon.png" className='w-full h-full object-cover object-center' alt="icon-pic-basic" />
                 </div>
@@ -67,7 +67,7 @@ const PricingSection = () => {
             </div>
             {/* single card */}
             {/* single card */}
-            <div className='bg-neutral border-[2px] border-solid border-[#00796B] p-[32px] w-[347px] rounded-[20px]'>
+            <div className='bg-neutral border-[2px] border-solid border-[#00796B] p-[32px] w-full rounded-[20px] md:w-[347px]'>
                 <div className='w-[40px] h-[40px] rounded-full'>
                     <img src="/images/premium-icon.png" className='w-full h-full object-cover object-center' alt="icon-pic-basic" />
                 </div>
@@ -106,7 +106,7 @@ const PricingSection = () => {
             </div>
             {/* single card */}
             {/* single card */}
-            <div className='bg-neutral p-[32px] w-[347px] rounded-[20px]'>
+            <div className='bg-neutral p-[32px] w-full rounded-[20px] md:w-[347px]'>
                 <div className='w-[40px] h-[40px] rounded-full'>
                     <img src="/images/fire-icon.png" className='w-full h-full object-cover object-center' alt="icon-pic-basic" />
                 </div>
