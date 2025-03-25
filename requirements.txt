@@ -1,0 +1,9 @@
+Django
+djangorestframework
+mysqlclient
+django-environ
+numpy
+nltk
+tensorflow
+django-cors-headers
+djangorestframework-simplejwt
